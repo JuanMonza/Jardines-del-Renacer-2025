@@ -1,12 +1,18 @@
 import React from 'react';
-import UmbralDePaz from './components/UmbralDePaz';
-import Servicios from './components/Servicios';
+import Header from './components/Header.jsx';
+import UmbralDePaz from './components/UmbralDePaz.jsx';
+import Servicios from './components/Servicios.jsx';
+import Galeria from './components/Galeria.jsx';
 
 function App() {
   return (
     <>
-      <UmbralDePaz /> 
-      <Servicios />
+      <Header />
+      <main>
+        <UmbralDePaz />
+        <Servicios />
+        <Galeria />
+      </main>
     </>
   );
 }
