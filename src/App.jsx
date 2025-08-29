@@ -3,6 +3,7 @@ import Header from './components/Header.jsx';
 import UmbralDePaz from './components/UmbralDePaz.jsx';
 import Servicios from './components/Servicios.jsx';
 import Galeria from './components/Galeria.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Servicios />
         <Galeria />
       </main>
+      <Footer /> 
     </>
   );
 }
