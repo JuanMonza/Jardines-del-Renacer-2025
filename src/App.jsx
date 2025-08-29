@@ -1,5 +1,5 @@
 import React from 'react';
-import UmbralDePaz from './components/UmbralDePaz'; // 1. Importamos el nuevo componente
+import UmbralDePaz from './components/UmbralDePaz';
 
 function App() {
   return (
