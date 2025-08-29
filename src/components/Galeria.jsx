@@ -15,36 +15,37 @@ const imagenes = [
 
 function Galeria() {
     const sectionRef = useRef(null);
-    const imagesRef = useRef([]);
 
     useEffect(() => {
-        gsap.from(imagesRef.current, {
-            opacity: 0,
-            scale: 0.8,
-            duration: 0.6,
-            stagger: 0.15,
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 80%',
-            },
-        });
+        // 1. Mismo método de contexto de GSAP
+        const ctx = gsap.context(() => {
+            gsap.from(".gallery-item", {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.6,
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 80%',
+                },
+            });
+        }, sectionRef);
+
+        // 2. Función de limpieza
+        return () => ctx.revert();
     }, []);
 
     return (
         <section id="galeria" ref={sectionRef} className="bg-white py-20 px-6">
             <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-4xl font-bold text-green-dark mb-2">
-                    Un Refugio de Paz
-                </h2>
-                <p className="text-lg text-gray-600 mb-12">
-                    Cada rincón de nuestros jardines está diseñado para la memoria y la serenidad.
-                </p>
+                <h2 className="text-4xl font-bold text-green-dark mb-2">Un Refugio de Paz</h2>
+                <p className="text-lg text-gray-600 mb-12">Cada rincón de nuestros jardines está diseñado para la memoria y la serenidad.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {imagenes.map((imagen, index) => (
+                    {imagenes.map((imagen) => (
                         <div
                             key={imagen.id}
-                            ref={el => imagesRef.current[index] = el}
-                            className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                            // 3. Añadimos la clase 'gallery-item'
+                            className="gallery-item overflow-hidden rounded-lg shadow-lg cursor-pointer"
                         >
                             <img
                                 src={imagen.src}

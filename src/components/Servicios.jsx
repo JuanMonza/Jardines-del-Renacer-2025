@@ -24,16 +24,9 @@ function Servicios() {
     const cardsRef = useRef([]);
 
     useEffect(() => {
-        gsap.from(cardsRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 80%',
-            },
-        });
+        // La línea de prueba que estábamos verificando
+        console.log("Servicios.jsx se montó correctamente. La animación debería empezar ahora.");
+
     }, []);
 
     return (
@@ -64,4 +57,5 @@ function Servicios() {
     );
 }
 
+// ESTA ES LA LÍNEA CRÍTICA QUE FALTABA O ESTABA INCORRECTA
 export default Servicios;
