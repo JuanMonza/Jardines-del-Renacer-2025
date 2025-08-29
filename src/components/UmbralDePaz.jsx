@@ -23,11 +23,9 @@ function UmbralDePaz() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      
-      {/* CORRECCIÓN AQUÍ: Ahora busca "background.mp4" */}
+    <section id="inicio" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       <video
-        src="/videos/background.mp4" 
+        src="/videos/background.mp4"
         autoPlay
         loop
         muted
@@ -36,14 +34,12 @@ function UmbralDePaz() {
       >
         Tu navegador no soporta el tag de video.
       </video>
-
       <div className="absolute top-0 left-0 w-full h-full bg-green-dark/60"></div>
-      
       <div className="relative z-10 text-center">
-        <h1 ref={titleRef} className="text-4xl md:text-6xl font-bold text-off-white tracking-wider">
+        <h1 ref={titleRef} className="text-4xl md:text-6xl font-bold text-white tracking-wider">
           Un Homenaje al Amor y al Recuerdo
         </h1>
-        <p ref={subtitleRef} className="mt-4 text-lg md:text-xl text-off-white/80">
+        <p ref={subtitleRef} className="mt-4 text-lg md:text-xl text-white/90">
           Un espacio de paz para honrar la vida.
         </p>
       </div>

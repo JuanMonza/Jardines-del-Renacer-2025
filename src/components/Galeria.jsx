@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Registro de plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const imagenes = [
@@ -15,17 +14,15 @@ const imagenes = [
 ];
 
 function Galeria() {
-    // Creamos las referencias
     const sectionRef = useRef(null);
     const imagesRef = useRef([]);
 
     useEffect(() => {
-        // Creamos la animación con ScrollTrigger
         gsap.from(imagesRef.current, {
             opacity: 0,
-            scale: 0.8, // Las imágenes empiezan un poco más pequeñas
+            scale: 0.8,
             duration: 0.6,
-            stagger: 0.15, // Anima cada imagen con 0.15s de diferencia
+            stagger: 0.15,
             scrollTrigger: {
                 trigger: sectionRef.current,
                 start: 'top 80%',
@@ -34,8 +31,7 @@ function Galeria() {
     }, []);
 
     return (
-        // Conectamos la referencia a la sección
-        <section ref={sectionRef} className="bg-white py-20 px-6">
+        <section id="galeria" ref={sectionRef} className="bg-white py-20 px-6">
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-4xl font-bold text-green-dark mb-2">
                     Un Refugio de Paz
@@ -43,10 +39,8 @@ function Galeria() {
                 <p className="text-lg text-gray-600 mb-12">
                     Cada rincón de nuestros jardines está diseñado para la memoria y la serenidad.
                 </p>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {imagenes.map((imagen, index) => (
-                        // Conectamos la referencia a cada imagen
                         <div
                             key={imagen.id}
                             ref={el => imagesRef.current[index] = el}

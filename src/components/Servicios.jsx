@@ -37,7 +37,7 @@ function Servicios() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="bg-off-white py-20 px-6">
+        <section id="servicios" ref={sectionRef} className="bg-off-white py-20 px-6">
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-4xl font-bold text-green-dark mb-2">
                     Acompañamiento en el Recorrido
@@ -45,13 +45,11 @@ function Servicios() {
                 <p className="text-lg text-gray-600 mb-12">
                     Ofrecemos un servicio integral basado en el respeto y la empatía.
                 </p>
-
                 <div className="grid md:grid-cols-3 gap-8">
                     {nuestrosServicios.map((servicio, index) => (
                         <div
                             key={index}
                             ref={el => cardsRef.current[index] = el}
-                            // AÑADIMOS LAS CLASES DE TRANSICIÓN Y HOVER AQUÍ
                             className="bg-white p-8 rounded-lg shadow-md border border-gray-200 cursor-pointer
                          transition-all duration-300 ease-in-out 
                          hover:shadow-xl hover:-translate-y-2 hover:border-gold-accent"
