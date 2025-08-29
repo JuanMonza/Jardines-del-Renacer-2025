@@ -1,17 +1,35 @@
-import React from 'react';
-
-// URL de un video de alta calidad y libre de derechos.
-// Más adelante, lo cambiaremos por un video propio de los jardines.
-const videoURL = "https://videos.pexels.com/video-files/4784391/4784391-hd_1920_1080_25fps.mp4";
+import React, { useRef, useEffect } from 'react'; // 1. Importamos los hooks y GSAP
+import { gsap } from 'gsap';
 
 function UmbralDePaz() {
-    return (
-        // 1. Añadimos 'relative' y 'overflow-hidden' al contenedor principal.
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    // 2. Creamos las referencias para los elementos de texto
+    const titleRef = useRef(null);
+    const subtitleRef = useRef(null);
 
-            {/* 2. El video de fondo */}
+    // 3. Este es el hook que ejecuta la animación cuando el componente carga
+    useEffect(() => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        // Animación para el título
+        tl.from(titleRef.current, {
+            opacity: 0,
+            y: 20, // Empieza 20px más abajo
+            duration: 1,
+        });
+
+        // Animación para el subtítulo, empieza un poco después que la del título
+        tl.from(subtitleRef.current, {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+        }, "-=0.8"); // El "-=0.8" crea un solapamiento elegante
+
+    }, []); // El array vacío asegura que la animación solo se ejecute una vez
+
+    return (
+        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
             <video
-                src={videoURL}
+                src="/videos/background.mp4"
                 autoPlay
                 loop
                 muted
@@ -20,20 +38,16 @@ function UmbralDePaz() {
             >
                 Tu navegador no soporta el tag de video.
             </video>
-
-            {/* 3. El overlay semitransparente para mejorar el contraste */}
             <div className="absolute top-0 left-0 w-full h-full bg-green-dark/60"></div>
-
-            {/* 4. El contenido centrado */}
             <div className="relative z-10 text-center">
-                <h1 className="text-4xl md:text-6xl font-bold text-off-white tracking-wider">
+                {/* 4. Conectamos las referencias a los elementos JSX */}
+                <h1 ref={titleRef} className="text-4xl md:text-6xl font-bold text-off-white tracking-wider">
                     Un Homenaje al Amor y al Recuerdo
                 </h1>
-                <p className="mt-4 text-lg md:text-xl text-off-white/80">
+                <p ref={subtitleRef} className="mt-4 text-lg md:text-xl text-off-white/80">
                     Un espacio de paz para honrar la vida.
                 </p>
             </div>
-
         </section>
     );
 }
